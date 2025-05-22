@@ -35,10 +35,10 @@ for hotel in Hotels:
     Staging["Hotel"] = hotel
     Staging["Rooms Solds"] = Room_Sold
     Staging["Rooms Revenue"] = Room_Rev
-    Staging["Compset Total Rooms"] = Comp_Rooms
-    Staging["Compset Rooms Sold"] = Comp_Room_Sold
-    Staging["Compset Rooms Revenue"] = Comp_Room_Rev
+    Staging["CompSet Total Rooms"] = Comp_Rooms
+    Staging["CompSet Rooms Sold"] = Comp_Room_Sold
+    Staging["CompSet Rooms Revenue"] = Comp_Room_Rev
 
     dataset = pd.concat([dataset, Staging], ignore_index=True) # Concatenates new rows
 
-dataset.to_csv("AzureDEPractice\File Creation\Test.csv")
+dataset.to_csv("AzureDEPractice\File Creation\Initial_Data.csv")
