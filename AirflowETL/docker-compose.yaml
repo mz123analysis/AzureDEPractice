@@ -150,7 +150,7 @@ services:
     depends_on:
       <<: *airflow-common-depends-on
       airflow-init:
-        condition: service_completed_successfully
+        condtion: service_completed_successfully
 
   airflow-triggerer:
     <<: *airflow-common

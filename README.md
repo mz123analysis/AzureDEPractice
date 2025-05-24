@@ -36,6 +36,12 @@ We created another folder that will hold our Airflow setup. We will utilize Dock
 
 Docker Compose allows us to run a multi-container application, with a variety of services we will utilize in this project. It will also allow users to run the same Airflow setup as we have isolated and defined the versions of the software we are using.
 
+
+### Airflow --- Pushing files into SFTP Server
+With the help of Airflow, I am able to push the initial data file and ochestrate a daily push of daily data into the SFTP server. I utilized Airflow Connections to save my credentials to my SFTP server without hard coding it somewhere. This can most likely be done through Azure Key Vaults as well.
+
+DAGs were created and tested to ensure that they are doing exactly what they should be doing.
+
 ### ETL into Database
 
 Pending
