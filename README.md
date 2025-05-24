@@ -26,4 +26,16 @@ On Azure, I first created a Storage Account. The most important part when creati
 
 Once a Storage Account is created, under settings on the left bar, you will click on SFTP and create a local user. This essentially creates a user and password to allow clients and vendors to access the SFTP server. I created two users to mimic vendor and client.
 
-### 
+### Docker Setup --- Airflow
+
+We created another folder that will hold our Airflow setup. We will utilize Docker to help us set this us. Docker provides us some good advantages when it comes to setting up Airflows such as:
+
+ * Fast Deployment
+ * Isolation
+ * Compatability
+
+Docker Compose allows us to run a multi-container application, with a variety of services we will utilize in this project. It will also allow users to run the same Airflow setup as we have isolated and defined the versions of the software we are using.
+
+### ETL into Database
+
+Pending
