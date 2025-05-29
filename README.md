@@ -26,6 +26,8 @@ On Azure, I first created a Storage Account. The most important part when creati
 
 Once a Storage Account is created, under settings on the left bar, you will click on SFTP and create a local user. This essentially creates a user and password to allow clients and vendors to access the SFTP server. I created two users to mimic vendor and client.
 
+Disclaimer --- Azure charges you hourly for hosting SFTP server. This can cost a lot in the long term, so I just pushed the files into SFTP before deleting the storage account due to fund limits.
+
 ### Docker Setup --- Airflow
 
 We created another folder that will hold our Airflow setup. We will utilize Docker to help us set this us. Docker provides us some good advantages when it comes to setting up Airflows such as:
@@ -44,4 +46,21 @@ DAGs were created and tested to ensure that they are doing exactly what they sho
 
 ### ETL into Database
 
-Pending
+Since I was able to develop an Airflow Script to create data files and push them into the SFTP Server, I've decided to shut down the SFTP server for two reasons.
+
+1. Retrieving Files off SFTP server will be the same as putting files onto the SFTP. "get" vs "put"
+2. Cost of consistently having the SFTP Server on. Azure bills us for the SFTP Server Hourly.
+
+Since I can make these files, I will just skip the "getting the Files" step and directly start the Loading into the Database. 
+
+Regarding Transformations, where we do depends on the end goal of what we want and where the transformation is done. Since my project is a hybrid of cloud and on-premise, doing transformations (computations) would generally be less costly then doing it on the cloud. Doing transformation on the cloud also has its adventages and disadvantages. You can do it before loading into the Database or during a staging table before pushing it into the Production Tables, but cost for computation is something you should always keep mind of, since it can ramp up really quickly.
+
+For this project, I will load the data into a staging table, do transformations (Hotel Metrics: Occ, ADR, RevPAR) before pushing into the Production Table.
+
+### PowerBI Dashboard
+
+You can use any BI Tool to create dashboards. I mainly chose PowerBI to get an understanding and feel for this PowerBI, espeically for my current work. It will be a simple Dashboard, showing daily and summary metrics.
+
+### API Creation
+
+I will also create an API. APIs are one of the most common to for data sharing. Creating one should be super common, espeically when clients want to access data. This will serve as a great practice.
