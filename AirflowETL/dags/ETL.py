@@ -84,7 +84,7 @@ with DAG(DAG_NAME,
         cursor.close()
         conn.close()
     
-    @task
+    @task(trigger_rule='one_success')
     def Staging_to_Prod():
          
         conn = pyodbc.connect('Encrypt=Optional;DRIVER={ODBC Driver 18 for SQL Server}; '
@@ -108,11 +108,12 @@ with DAG(DAG_NAME,
         ' SERVER=' + Variable.get("Azureserver", deserialize_json=True) +'; DATABASE='+ Variable.get("AzureDB", deserialize_json=True)+
         ';UID=' + Variable.get("Azure_User", deserialize_json=True) +';PWD=' + Variable.get("MSSQL_Pass", deserialize_json=True))
         cursor = conn.cursor()
+
         cursor.execute("TRUNCATE TABLE dbo.Staging")
         conn.commit()
-
-        conn.close()
+        
         cursor.close()
+        conn.close()
 
     # The Branching chooses which dataset to utilize
     Check_Data_Exists() >> [initial_data_task(), daily_task()] >> Staging_to_Prod() >> reset_Staging()
