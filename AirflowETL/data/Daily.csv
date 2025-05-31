@@ -1,6 +1,6 @@
-,Date,Total Rooms,Hotel,Rooms Solds,Rooms Revenue,CompSet Total Rooms,CompSet Rooms Sold,CompSet Rooms Revenue
-0,2025-05-24,442,Imaginary Hotel 1,292,9270,252,109,131500
-1,2025-05-24,335,Imaginary Hotel 2,295,6944,533,211,126262
-2,2025-05-24,156,Imaginary Hotel 3,125,41375,978,669,217498
-3,2025-05-24,490,Imaginary Hotel 4,82,9509,1130,1066,133472
-4,2025-05-24,311,Imaginary Hotel 5,167,14973,318,127,200440
+Date,Hotel,Total Rooms,Rooms Solds,Rooms Revenue,CompSet Total Rooms,CompSet Rooms Sold,CompSet Rooms Revenue
+2025-05-31,Imaginary Hotel 1,442,293,9270,252,110,131500
+2025-05-31,Imaginary Hotel 2,335,296,6944,533,212,126262
+2025-05-31,Imaginary Hotel 3,156,126,41375,978,670,217498
+2025-05-31,Imaginary Hotel 4,490,83,9509,1130,1067,133472
+2025-05-31,Imaginary Hotel 5,311,168,14973,318,128,200440

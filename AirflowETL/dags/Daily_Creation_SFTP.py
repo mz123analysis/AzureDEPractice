@@ -44,16 +44,16 @@ with DAG(DAG_NAME,
 
             # Generating random numbers for these specific metrics
             Total_Rooms = rooms
-            Room_Sold = random.randint(0,Total_Rooms)
+            Room_Sold = random.randint(1,Total_Rooms)
             Room_Rev = random.randint(5000, 100000)
             Comp_Rooms = CS_Hotels[hotel]
-            Comp_Room_Sold = random.randint(0,Comp_Rooms)
+            Comp_Room_Sold = random.randint(1,Comp_Rooms)
             Comp_Room_Rev = random.randint(5000, 250000)
 
             row = {
             "Date" : date.today(),
-            "Total Rooms" : Total_Rooms,
             "Hotel" : hotel,
+            "Total Rooms" : Total_Rooms,
             "Rooms Solds" : Room_Sold,
             "Rooms Revenue" : Room_Rev,
             "CompSet Total Rooms" : Comp_Rooms,
@@ -64,10 +64,10 @@ with DAG(DAG_NAME,
             rows.append(row) # Concatenates new rows
 
         dataset = pd.DataFrame(rows)
-        dataset.to_csv("/opt/airflow/data/Daily.csv")
+        dataset.to_csv("/opt/airflow/data/Daily.csv",index=False)
 
     @task
-    def Daily_Push_To_SFTP():
+    def Daily_Push_To_SFTP():   
     
         upload_to_sftp = SFTPOperator(
             task_id='upload_Daily_to_sftp',
