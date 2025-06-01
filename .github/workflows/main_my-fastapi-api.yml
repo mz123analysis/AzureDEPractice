@@ -10,11 +10,11 @@ on:
       - main
   workflow_dispatch:
 
-jobs:
+jjobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read #This is required for actions/checkout
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -23,24 +23,25 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
+
       - name: Install dependencies
-        working-directory: AzureWebApps
-        run: pip install -r requirements.txt
-        
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+        run: pip install -r AzureWebApps/requirements.txt
+
+      - name: Copy app files to workspace root
+        run: |
+          mkdir app
+          cp -r AzureWebApps/* app/
 
       - name: Zip artifact for deployment
         run: |
-          zip -r release.zip AzureWebApps/* -x "*venv/*"
+          cd app
+          zip -r ../release.zip . -x "*venv/*"
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: |
-            release.zip
-            !venv/
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
