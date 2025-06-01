@@ -30,13 +30,12 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
-        working-directory: API
+        working-directory: API/venv
         run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
-        working-directory: API
         run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment jobs
