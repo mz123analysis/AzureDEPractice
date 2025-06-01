@@ -2,11 +2,7 @@ import pyodbc
 import os
 from dotenv import load_dotenv
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(script_dir)
-parent_dir = os.path.dirname(parent_dir)
-env_path = os.path.join(parent_dir,".env")
-load_dotenv(env_path)
+load_dotenv()
 
 server = os.getenv("Azure_Server")
 database = os.getenv("Azure_DB")
