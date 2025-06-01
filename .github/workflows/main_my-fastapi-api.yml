@@ -10,7 +10,7 @@ on:
       - main
   workflow_dispatch:
 
-jjobs:
+jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
