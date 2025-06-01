@@ -61,6 +61,8 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
+      - name: Confirm uvicorn is available
+        run: which uvicorn
       
       - name: Login to Azure
         uses: azure/login@v2
