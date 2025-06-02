@@ -64,3 +64,34 @@ You can use any BI Tool to create dashboards. I mainly chose PowerBI to get an u
 ### API Creation
 
 I will also create an API. APIs are one of the most common to for data sharing. Creating one should be super common, espeically when clients want to access data. This will serve as a great practice.
+
+I first developed a development API in the "API" Folder. I was able to create a security, database access, and one endpoint for the API where we are able to query for a date range.
+
+I then decided to host it on AzureWebApps so the internet can access it. This will be turned off soon, so I will relay the steps I took to host it. Directory is extremely important as if your directory is off, it will not download dependencies or look at specific files.
+
+This is the steps I took.
+
+1.  I created the AzureWebApps folder and dumped db.py, main.py, and security.py. I then created requirements.txt and wrote all the dependencies that FastAPI would use. The environment file was not tracked due to it containing sensitive information. 
+
+2. I then created Web App through App Service on Azure. I filled out the necessary information I needed in the Basics Tab and review and created.
+
+3. From there, I accessed the App Service. In Environment Variables, I entered the Environment Variables I had on my .env file (Database Login and API Key).
+
+4. Next in Confirgation, I added this command into Startup Command: "uvicorn main:app --host 0.0.0.0 --port 8000"
+
+5. After that, in Deployment Center, I connected my GitHub since this is where I had the files. Organization, Repository, and Branch information was added. Once save, a .github\workflow will be created in your GitHub Repo. I had to do many changes to the YAML file due to me having my files in the subfolder.
+
+The main changes was these code here, to determine where my dependencies and files are being downloaded to. A lot of errors can happen with this file and the Startup Command.
+![.YML File Changes](image-1.png)
+
+6. Once you make the changes to the YML file and committ it, The App should immediately start to redeploys. I was able to utilize SwaggerUI to see my API in action. 
+
+![Image of me accessing the API after hosting through Azure](image.png)
+
+### Final Thoughts
+
+This project was very education in learning how to utilize Azure, understanding the industry standards and coding standards, and the different project one can undertake. 
+
+I've learned how to create SFTP Servers, download and push files into SFTP Servers, Creation of API, learning of AirFlow and complex things like Branching, Database creation with ETL, and PowerBI Dashboard Standards.
+
+Azure services will be turned off since I am currently utilizing the free plan on Azure. Feel free to message me if you don't understand thing in the Repository.
