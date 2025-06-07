@@ -95,3 +95,18 @@ This project was very education in learning how to utilize Azure, understanding 
 I've learned how to create SFTP Servers, download and push files into SFTP Servers, Creation of API, learning of AirFlow and complex things like Branching, Database creation with ETL, and PowerBI Dashboard Standards.
 
 Azure services will be turned off since I am currently utilizing the free plan on Azure. Feel free to message me if you don't understand thing in the Repository.
+
+
+## Adding Autherization and Authentication to my API (6/7/25)
+
+APIs are utilized very often so it is extremely important to ensure that only the right people are allowed to get data from your API. To this, I utilized OAuth2 and JSON Web Tokens (JWT).
+
+OAuth2 is currently the industry-standard protocol for authorization. It allows 3rd party applications to access their data without sharing their  credentials. This is extremely useful as we can use this authorization to see if users are allowed to utilize this API.
+
+JWT allows for authentication and exchanging information. In my case, we can see whether user has the authentication to query data from my database.
+
+I utilize OAuth2 to see if the user is actually a trusted person and JWT to handle what that user can do within my API. In a programming world, this would probably look like a login page and providing the user a certain access page (admin, user, etc...), but we can do similar things for users to access a database API.
+
+To help me get OAuth2 and JWT running, I utilized a ORM (Tortoise, but SQLAlchemy does similar things)to interact with my database and objects within my program, pydantic to do data validation, JWT to create and decode JWT tokens, and bcrypt to hash important information into the database.
+
+Please go to the API Folder to view my code for setting this up.

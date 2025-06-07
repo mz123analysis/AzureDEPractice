@@ -8,7 +8,6 @@ from tortoise.models import Model
 from tortoise.contrib.fastapi import register_tortoise
 from tortoise.contrib.pydantic import pydantic_model_creator # Helps us validiates inputs vs database 
 from db import get_connection
-from security import verify_api_key
 from datetime import date
 import datetime
 
