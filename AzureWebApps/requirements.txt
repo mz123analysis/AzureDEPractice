@@ -2,3 +2,4 @@ fastapi
 uvicorn[standard]
 pyodbc
 python-dotenv
+python-multipart
